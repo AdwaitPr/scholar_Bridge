@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_navy">#0F172A</color>
+    <color name="brand_blue">#1D4ED8</color>
+    <color name="brand_teal">#0D9488</color>
+    <color name="brand_emerald">#15803D</color>
+    <color name="brand_amber">#B45309</color>
+    <color name="brand_crimson">#B91C1C</color>
+    <color name="background_light">#F8FAFC</color>
+</resources>
