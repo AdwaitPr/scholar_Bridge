@@ -1,0 +1,52 @@
+{
+  "common": {
+    "appName": "ScholarBridge",
+    "tagline": "Verified Scholarship Discovery & Application Tracker",
+    "antiFraudNotice": "Government applications on NSP are 100% free. Never pay agent fees.",
+    "deadlineNotVerified": "Deadline not verified",
+    "applyOnOfficialSite": "Apply on Official Portal",
+    "saveScholarship": "Save",
+    "saved": "Saved",
+    "exploreScholarships": "Explore Scholarships",
+    "startMatching": "Check My Eligibility",
+    "back": "Back",
+    "cancel": "Cancel",
+    "save": "Save Changes",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "errorOccurred": "An unexpected error occurred."
+  },
+  "outcomes": {
+    "potentialMatch": "Potential match",
+    "additionalInfoRequired": "Additional information required",
+    "likelyIneligible": "Likely ineligible",
+    "requiresOfficialVerification": "Eligibility requires official verification",
+    "freshNotOpen": "Fresh applications not open yet – check portal"
+  },
+  "deadlines": {
+    "studentDeadline": "Student Application Deadline",
+    "instituteDeadline": "Institute Verification (INO) Deadline",
+    "daysRemaining": "{count} days left",
+    "hoursRemaining": "{count} hours left",
+    "closesToday": "Closes Today (IST 23:59:59)",
+    "expired": "Application Window Closed"
+  },
+  "checklist": {
+    "title": "Application Document Readiness",
+    "notOfficialValidation": "This checklist tracks your personal readiness only and is not official portal validation.",
+    "readyToApply": "Ready to Apply",
+    "inProgress": "Preparation in Progress",
+    "notStarted": "Not Started"
+  },
+  "nav": {
+    "discovery": "Discover",
+    "dashboard": "Dashboard",
+    "saved": "Saved",
+    "applications": "Applications",
+    "deadlines": "Deadlines",
+    "settings": "Settings",
+    "admin": "Admin Console",
+    "login": "Sign In",
+    "logout": "Sign Out"
+  }
+}

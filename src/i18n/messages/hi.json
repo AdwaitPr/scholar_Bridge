@@ -1,0 +1,52 @@
+{
+  "common": {
+    "appName": "ScholarBridge (स्कॉलरब्रिज)",
+    "tagline": "सत्यापित छात्रवृत्ति खोज और आवेदन ट्रैकर",
+    "antiFraudNotice": "NSP पर सरकारी छात्रवृत्ति आवेदन पूर्णतः निःशुल्क हैं। किसी भी एजेंट को पैसे न दें।",
+    "deadlineNotVerified": "अंतिम तिथि सत्यापित नहीं है",
+    "applyOnOfficialSite": "आधिकारिक पोर्टल पर आवेदन करें",
+    "saveScholarship": "सहेजें",
+    "saved": "सहेजा गया",
+    "exploreScholarships": "छात्रवृत्तियां देखें",
+    "startMatching": "मेरी पात्रता जांचें",
+    "back": "वापस जाएं",
+    "cancel": "रद्द करें",
+    "save": "परिवर्तन सहेजें",
+    "delete": "हटाएं",
+    "loading": "लोड हो रहा है...",
+    "errorOccurred": "एक अप्रत्याशित त्रुटि उत्पन्न हुई।"
+  },
+  "outcomes": {
+    "potentialMatch": "संभावित मिलान (Potential match)",
+    "additionalInfoRequired": "अतिरिक्त जानकारी आवश्यक (Additional info required)",
+    "likelyIneligible": "अपात्र होने की संभावना (Likely ineligible)",
+    "requiresOfficialVerification": "आधिकारिक सत्यापन आवश्यक (Official verification required)",
+    "freshNotOpen": "नए आवेदन अभी शुरू नहीं हुए हैं - पोर्टल देखें"
+  },
+  "deadlines": {
+    "studentDeadline": "छात्र आवेदन की अंतिम तिथि",
+    "instituteDeadline": "संस्थान सत्यापन (INO) की अंतिम तिथि",
+    "daysRemaining": "{count} दिन शेष",
+    "hoursRemaining": "{count} घंटे शेष",
+    "closesToday": "आज समाप्त हो रहा है (IST 23:59:59)",
+    "expired": "आवेदन विंडो बंद हो चुकी है"
+  },
+  "checklist": {
+    "title": "दस्तावेज़ तत्परता चेकलिस्ट",
+    "notOfficialValidation": "यह चेकलिस्ट केवल आपकी व्यक्तिगत तैयारी को ट्रैक करती है और आधिकारिक सत्यापन नहीं है।",
+    "readyToApply": "आवेदन के लिए तैयार",
+    "inProgress": "तैयारी जारी है",
+    "notStarted": "शुरू नहीं हुआ"
+  },
+  "nav": {
+    "discovery": "छात्रवृत्तियां खोजें",
+    "dashboard": "डैशबोर्ड",
+    "saved": "सहेजी गई",
+    "applications": "आवेदन",
+    "deadlines": "अंतिम तिथियां",
+    "settings": "सेटिंग्स",
+    "admin": "व्यवस्थापक कंसोल",
+    "login": "साइन इन",
+    "logout": "साइन आउट"
+  }
+}
