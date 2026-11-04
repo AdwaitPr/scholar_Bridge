@@ -608,6 +608,18 @@ export interface Database {
         };
         Returns: boolean;
       };
+      initialize_application_with_checklist: {
+        Args: {
+          p_user_id: string;
+          p_scholarship_id: string;
+        };
+        Returns: {
+          application_id: string;
+          checklist_id: string;
+          status: ApplicationStatus;
+          new_items_created: number;
+        };
+      };
     };
     Enums: {
       user_role: UserRole;
