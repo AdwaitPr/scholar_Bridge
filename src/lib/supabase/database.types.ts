@@ -457,7 +457,22 @@ export interface Database {
           created_at?: string;
           updated_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "applications_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "applications_scholarship_id_fkey";
+            columns: ["scholarship_id"];
+            isOneToOne: false;
+            referencedRelation: "scholarships";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       application_checklists: {
         Row: {
@@ -478,7 +493,22 @@ export interface Database {
           user_id?: string;
           created_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "application_checklists_application_id_fkey";
+            columns: ["application_id"];
+            isOneToOne: false;
+            referencedRelation: "applications";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "application_checklists_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       checklist_items: {
         Row: {
@@ -514,7 +544,22 @@ export interface Database {
           completed_at?: string | null;
           sort_order?: number;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "checklist_items_checklist_id_fkey";
+            columns: ["checklist_id"];
+            isOneToOne: false;
+            referencedRelation: "application_checklists";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "checklist_items_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       reminders: {
         Row: {
@@ -547,7 +592,22 @@ export interface Database {
           is_dismissed?: boolean;
           created_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "reminders_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "reminders_scholarship_id_fkey";
+            columns: ["scholarship_id"];
+            isOneToOne: false;
+            referencedRelation: "scholarships";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       verification_logs: {
         Row: {
