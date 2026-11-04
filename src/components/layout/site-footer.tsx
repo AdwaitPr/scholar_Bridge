@@ -128,9 +128,7 @@ export function SiteFooter() {
         </div>
 
         <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px]">
-          <p>
-            © {new Date().getFullYear()} ScholarBridge. All rights reserved.
-          </p>
+          <p>© 2026 ScholarBridge. All rights reserved.</p>
           <p className="text-center sm:text-right">
             Asia/Kolkata Timezone (IST, UTC+05:30) • Non-commercial educational
             initiative.

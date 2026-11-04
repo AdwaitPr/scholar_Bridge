@@ -19,7 +19,7 @@ import {
   ALLOWED_STATUS_TRANSITIONS,
 } from "@/lib/schemas/application.schema";
 import { evaluateScholarshipDeadline } from "@/modules/deadline-management/deadline.service";
-import type { ApplicationTrackerRecord } from "@/modules/tracker/tracker.service";
+import type { ApplicationTrackerRecord } from "@/modules/tracker/tracker.types";
 
 interface ApplicationsTrackerViewProps {
   initialApplications: ApplicationTrackerRecord[];

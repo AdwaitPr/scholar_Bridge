@@ -24,6 +24,11 @@
   --radius: 0.5rem;
 
   /* ScholarBridge Semantic Tokens */
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading:
+    "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   --brand-navy: #0f172a;
   --brand-blue: #1d4ed8;
   --brand-teal: #0d9488;

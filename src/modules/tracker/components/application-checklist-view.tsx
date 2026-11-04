@@ -16,19 +16,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DeadlineBadge } from "@/components/ui/deadline-badge";
 import { AntiFraudBanner } from "@/components/ui/anti-fraud-banner";
-import { ApplicationTrackerService } from "@/modules/tracker/tracker.service";
+import {
+  type ApplicationTrackerRecord,
+  type ChecklistItemRecord as ChecklistItem,
+  calculateChecklistProgress,
+} from "@/modules/tracker/tracker.types";
 import { evaluateScholarshipDeadline } from "@/modules/deadline-management/deadline.service";
-import type { ApplicationTrackerRecord } from "@/modules/tracker/tracker.service";
-
-interface ChecklistItem {
-  id: string;
-  item_title: string;
-  item_category: "document" | "registration" | "verification" | "test";
-  guidance_notes: string | null;
-  is_completed: boolean;
-  completed_at: string | null;
-  sort_order: number;
-}
 
 interface ApplicationChecklistViewProps {
   application: ApplicationTrackerRecord;
@@ -49,7 +42,7 @@ export function ApplicationChecklistView({
   const [isSavingNotes, setIsSavingNotes] = useState<boolean>(false);
   const [savedFeedback, setSavedFeedback] = useState<string | null>(null);
 
-  const progress = ApplicationTrackerService.calculateChecklistProgress(items);
+  const progress = calculateChecklistProgress(items);
   const deadline = app.scholarship
     ? evaluateScholarshipDeadline(
         app.scholarship.student_deadline_at,
