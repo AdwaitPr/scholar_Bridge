@@ -17,6 +17,7 @@ export interface ClauseEvaluationDetail {
   status:
     "SATISFIED" | "NOT_SATISFIED" | "MISSING_INFO" | "REQUIRES_VERIFICATION";
   explanation: string;
+  field?: string;
 }
 
 export interface EligibilityEvaluationResult {
@@ -155,6 +156,7 @@ function evaluateNode(
             label: node.label,
             status: "MISSING_INFO",
             explanation: node.missingExplanation,
+            field: node.field,
           },
         ],
         verify: [],
