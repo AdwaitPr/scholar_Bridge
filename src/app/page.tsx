@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, GraduationCap, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AntiFraudBanner } from "@/components/ui/anti-fraud-banner";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { ScholarshipCatalogRepository } from "@/modules/scholarship-catalog/repository";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -310,39 +311,7 @@ export default async function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white py-8 text-xs text-slate-500">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="space-y-1 text-center sm:text-left">
-            <p className="font-bold text-slate-800">ScholarBridge India</p>
-            <p>
-              Non-official student guidance platform. Deterministic matching
-              based on authoritative guidelines.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4 text-xs font-medium">
-            <Link href="/scholarships" className="hover:text-blue-700">
-              Discovery Catalog
-            </Link>
-            <a
-              href="https://scholarships.gov.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-700"
-            >
-              National Scholarship Portal (NSP)
-            </a>
-            <a
-              href="https://www.myscheme.gov.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-700"
-            >
-              myScheme.gov.in
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
