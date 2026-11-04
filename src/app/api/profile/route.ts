@@ -62,8 +62,10 @@ export async function PUT(req: NextRequest) {
       );
     }
 
+    const safeData = { ...parseResult.data };
+    delete (safeData as Record<string, unknown>).role;
     const profileData = {
-      ...parseResult.data,
+      ...safeData,
       id: user.id, // Enforce current user ID
       updated_at: new Date().toISOString(),
     };

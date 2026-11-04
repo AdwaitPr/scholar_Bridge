@@ -14,6 +14,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "seed": "tsx scripts/seed-scholarships.ts",
+    "audit:secrets": "tsx scripts/audit-no-secrets.ts",
     "prepare": "husky"
   },
   "lint-staged": {
