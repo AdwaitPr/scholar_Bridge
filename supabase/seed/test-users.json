@@ -1,0 +1,51 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "email": "student.a@synthetic.scholarbridge.in",
+    "role": "student",
+    "display_name": "Ananya Sharma (Synthetic)",
+    "education_level": "undergraduate_technical",
+    "course_stream": "Computer Science & Engineering",
+    "course_year": 1,
+    "is_lateral_entry": false,
+    "study_mode": "regular_full_time",
+    "domicile_state": "Maharashtra",
+    "institution_type": "aicte_approved",
+    "has_valid_aishe_code": true,
+    "academic_percentage": 88.5,
+    "annual_family_income_inr": 420000,
+    "social_category": "General",
+    "gender": "Female",
+    "age_years": 18,
+    "girls_in_family_applying": 1,
+    "years_gap_after_qualifying_exam": 0,
+    "receiving_other_scholarship": false
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "email": "student.b@synthetic.scholarbridge.in",
+    "role": "student",
+    "display_name": "Rohit Verma (Synthetic)",
+    "education_level": "postgraduate_general",
+    "course_stream": "M.Sc. Mathematics",
+    "course_year": 1,
+    "is_lateral_entry": false,
+    "study_mode": "regular_full_time",
+    "domicile_state": "Uttar Pradesh",
+    "institution_type": "ugc_recognized",
+    "has_valid_aishe_code": true,
+    "academic_percentage": 82.0,
+    "annual_family_income_inr": 300000,
+    "social_category": "OBC",
+    "gender": "Male",
+    "age_years": 23,
+    "is_first_pg_degree": true,
+    "receiving_other_scholarship": false
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000099",
+    "email": "admin@synthetic.scholarbridge.in",
+    "role": "admin",
+    "display_name": "Curator Admin (Synthetic)"
+  }
+]
