@@ -18,7 +18,24 @@ export interface EvaluatedDeadline {
   renewalOnlyNote: string | null;
 }
 
-const IST_TIMEZONE = "Asia/Kolkata";
+export const IST_TIMEZONE = "Asia/Kolkata";
+
+/**
+ * Formats a Date or ISO date string in Indian Standard Time (IST).
+ */
+export function formatInIST(dateIsoOrObj: string | Date): string {
+  const date =
+    typeof dateIsoOrObj === "string" ? new Date(dateIsoOrObj) : dateIsoOrObj;
+  return new Intl.DateTimeFormat("en-IN", {
+    timeZone: IST_TIMEZONE,
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  }).format(date);
+}
 
 /**
  * Evaluates scholarship deadlines strictly in Indian Standard Time (Asia/Kolkata).
