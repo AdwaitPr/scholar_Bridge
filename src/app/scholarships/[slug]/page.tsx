@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import {
   ArrowLeft,
   Building2,
@@ -15,6 +16,7 @@ import { DeadlineBadge } from "@/components/ui/deadline-badge";
 import { MatchBadge } from "@/components/ui/match-badge";
 import { AntiFraudBanner } from "@/components/ui/anti-fraud-banner";
 import { SourceProvenanceBox } from "@/components/ui/source-provenance-box";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { ScholarshipCatalogRepository } from "@/modules/scholarship-catalog/repository";
 import { evaluateScholarshipDeadline } from "@/modules/deadline-management/deadline.service";
 import { evaluateScholarshipEligibility } from "@/modules/eligibility-engine/evaluator";
@@ -22,6 +24,29 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 interface ScholarshipDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ScholarshipDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const scholarship = await ScholarshipCatalogRepository.getBySlug(slug);
+
+  if (!scholarship) {
+    return {
+      title: "Scholarship Not Found | ScholarBridge",
+    };
+  }
+
+  return {
+    title: `${scholarship.name} — Eligibility, Deadline & Verification | ScholarBridge`,
+    description: scholarship.eligibility_summary || scholarship.description,
+    openGraph: {
+      title: `${scholarship.name} | ScholarBridge`,
+      description: scholarship.benefits_summary || scholarship.description,
+      type: "article",
+    },
+  };
 }
 
 export default async function ScholarshipDetailPage({
@@ -95,8 +120,39 @@ export default async function ScholarshipDetailPage({
       }).format(scholarship.max_annual_benefit_inr)
     : null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "GovernmentService",
+    name: scholarship.name,
+    serviceType: "Scholarship / Educational Aid",
+    provider: {
+      "@type": "Organization",
+      name: scholarship.provider_name,
+    },
+    description: scholarship.description,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "INR",
+    },
+    ...(scholarship.max_annual_benefit_inr
+      ? {
+          amount: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: scholarship.max_annual_benefit_inr,
+          },
+        }
+      : {}),
+    url: scholarship.official_source_url,
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50/70 pb-20">
+    <div className="min-h-screen bg-slate-50/70 pb-20 flex flex-col justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Top Header */}
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
@@ -310,6 +366,8 @@ export default async function ScholarshipDetailPage({
           </div>
         </div>
       </main>
+
+      <SiteFooter />
     </div>
   );
 }
