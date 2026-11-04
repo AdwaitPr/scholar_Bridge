@@ -1,0 +1,2144 @@
+[
+  {
+    "code": "SCH-01",
+    "slug": "aicte-pragati-degree",
+    "name": "AICTE Pragati Scholarship Scheme for Girl Students (Technical Degree)",
+    "provider_name": "AICTE, Ministry of Education",
+    "provider_type": "statutory_body_aicte_ugc",
+    "funding_type": "merit_based",
+    "description": "Scholarship aimed at providing assistance for advancement of girls pursuing technical education. Implemented by AICTE for female students admitted to first year of Degree level course OR second year of Degree level course via lateral entry in AICTE approved institutions.",
+    "benefits_summary": "₹50,000 per annum lump sum for every year of study (max 4 years for 1st year admits, max 3 years for lateral entry admits) towards college fee, books, equipment, and laptop.",
+    "max_annual_benefit_inr": 50000,
+    "eligibility_summary": "Girl students admitted to 1st year Degree or 2nd year Lateral Entry in AICTE-approved institution. Family income <= ₹8,00,000/yr. Max 2 girls per family. Gap after 12th <= 2 years.",
+    "application_instructions": "Register on NSP portal with OTR ID. Select AICTE Pragati Degree scheme. Provide Centralized Admission Process (CAP) allotment letter, Tehsildar income certificate, and bonafide certificate from college.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": ["undergraduate_technical"],
+    "max_income_inr": 800000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "AICTE Pragati Guidelines AY 2026-27, Section 3 Eligibility Criteria",
+    "rule_ast": {
+      "type": "AND",
+      "id": "pragati-degree-root",
+      "label": "AICTE Pragati (Technical Degree) Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "pragati-gender",
+          "category": "other",
+          "field": "gender",
+          "operator": "eq",
+          "value": "Female",
+          "requiresOfficialVerification": false,
+          "label": "Girl Student Requirement",
+          "passExplanation": "Applicant is a female student.",
+          "failExplanation": "AICTE Pragati is exclusively for female students.",
+          "missingExplanation": "Please specify gender in your profile."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "eq",
+          "value": "undergraduate_technical",
+          "requiresOfficialVerification": false,
+          "label": "Technical Degree Program",
+          "passExplanation": "Enrolled in an undergraduate technical degree course.",
+          "failExplanation": "Must be pursuing a technical degree course.",
+          "missingExplanation": "Please select your current education level."
+        },
+        {
+          "type": "OR",
+          "id": "pragati-admission-year-or-lateral",
+          "label": "1st Year Regular or 2nd Year Lateral Entry",
+          "children": [
+            {
+              "type": "CONDITION",
+              "id": "pragati-yr-1",
+              "category": "education",
+              "field": "course_year",
+              "operator": "eq",
+              "value": 1,
+              "requiresOfficialVerification": false,
+              "label": "First Year Admission",
+              "passExplanation": "Admitted in the 1st year of the degree program.",
+              "failExplanation": "Not in 1st year.",
+              "missingExplanation": "Specify your current year of study."
+            },
+            {
+              "type": "AND",
+              "id": "pragati-yr-2-lateral",
+              "label": "Second Year Lateral Entry",
+              "children": [
+                {
+                  "type": "CONDITION",
+                  "id": "pragati-yr-2",
+                  "category": "education",
+                  "field": "course_year",
+                  "operator": "eq",
+                  "value": 2,
+                  "requiresOfficialVerification": false,
+                  "label": "Second Year of Study",
+                  "passExplanation": "Studying in 2nd year.",
+                  "failExplanation": "Fresh applications are only for 1st year or 2nd year lateral entry.",
+                  "missingExplanation": "Specify your current year of study."
+                },
+                {
+                  "type": "CONDITION",
+                  "id": "pragati-lateral-flag",
+                  "category": "education",
+                  "field": "is_lateral_entry",
+                  "operator": "eq",
+                  "value": true,
+                  "requiresOfficialVerification": false,
+                  "label": "Lateral Entry Admission",
+                  "passExplanation": "Admitted into 2nd year via lateral entry.",
+                  "failExplanation": "2nd year students are eligible only if admitted via lateral entry.",
+                  "missingExplanation": "Specify whether you entered via lateral entry."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 800000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹8,00,000",
+          "passExplanation": "Annual family income is within the ₹8,00,000 ceiling.",
+          "failExplanation": "Annual family income exceeds the ₹8,00,000 maximum limit.",
+          "missingExplanation": "Enter your annual family income to verify the ₹8,00,000 limit.",
+          "verificationNote": "Requires valid current-year Income Certificate issued by Tehsildar or competent State/UT authority."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-family-cap",
+          "category": "other",
+          "field": "girls_in_family_applying",
+          "operator": "lte",
+          "value": 2,
+          "requiresOfficialVerification": false,
+          "label": "Maximum Two Girls Per Family",
+          "passExplanation": "Within the limit of up to 2 girls per family.",
+          "failExplanation": "Maximum 2 girl children per family are eligible for AICTE Pragati.",
+          "missingExplanation": "Confirm how many girls in your family are availing/applying for Pragati."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-exam-gap",
+          "category": "academic",
+          "field": "years_gap_after_qualifying_exam",
+          "operator": "lte",
+          "value": 2,
+          "requiresOfficialVerification": false,
+          "label": "Gap After Qualifying Exam <= 2 Years",
+          "passExplanation": "Gap between passing Class 12/qualifying exam and admission is <= 2 years.",
+          "failExplanation": "Gap after passing qualifying exam cannot exceed 2 years.",
+          "missingExplanation": "Enter the number of gap years (0 if none) after your qualifying exam."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-aicte-inst",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "aicte_approved",
+          "requiresOfficialVerification": true,
+          "label": "AICTE-Approved Institution & Centralized Admission",
+          "passExplanation": "Enrolled in an AICTE-approved technical institution.",
+          "failExplanation": "Institution must hold current-year AICTE approval.",
+          "missingExplanation": "Select your institution accreditation type.",
+          "verificationNote": "Institute Nodal Officer (INO) must verify current-year AICTE approval and confirm admission was via Centralized Admission Process (not management quota)."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-no-other-scholarship",
+          "category": "other",
+          "field": "receiving_other_scholarship",
+          "operator": "eq",
+          "value": false,
+          "requiresOfficialVerification": false,
+          "label": "No Concurrent Central/State/AICTE Scholarship",
+          "passExplanation": "Not receiving conflicting central, state, or AICTE scholarship benefits.",
+          "failExplanation": "Recipients cannot hold another Central, State, or AICTE scholarship simultaneously.",
+          "missingExplanation": "Confirm whether you currently receive another scholarship."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Class 10 & 12 / Diploma Mark Sheets",
+        "specification_notes": "Self-attested copies of mark sheets proving admission qualifying examination.",
+        "is_mandatory": true,
+        "issuing_authority": "Recognized State or Central Education Board",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Annual Family Income Certificate",
+        "specification_notes": "Issued by Tehsildar/Revenue Authority valid for current financial year (family income <= 8 Lakhs).",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar / District Revenue Officer",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Centralized Admission Allotment Letter (CAP)",
+        "specification_notes": "Proves admission into Degree course via state or centralized counselling quota.",
+        "is_mandatory": true,
+        "issuing_authority": "Directorate of Technical Education / State Counselling Authority",
+        "sort_order": 3
+      },
+      {
+        "document_name": "Bonafide Student Certificate with AISHE Code",
+        "specification_notes": "Issued by college principal confirming enrollment and AICTE-approval status.",
+        "is_mandatory": true,
+        "issuing_authority": "Head of Technical Institution",
+        "sort_order": 4
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "National Scholarship Portal AICTE Pragati Guidelines",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-02",
+    "slug": "aicte-pragati-diploma",
+    "name": "AICTE Pragati Scholarship Scheme for Girl Students (Technical Diploma)",
+    "provider_name": "AICTE, Ministry of Education",
+    "provider_type": "statutory_body_aicte_ugc",
+    "funding_type": "merit_based",
+    "description": "Scholarship aimed at providing assistance for advancement of girls pursuing technical diploma education. Implemented by AICTE for female students admitted to first year of Diploma course OR second year of Diploma course via lateral entry in AICTE approved polytechnics.",
+    "benefits_summary": "₹50,000 per annum lump sum for every year of study (up to 3 years; max ₹1,50,000) towards college fees, books, and study aids.",
+    "max_annual_benefit_inr": 50000,
+    "eligibility_summary": "Girl students admitted to 1st year Diploma or 2nd year Lateral Entry in AICTE-approved polytechnic. Family income <= ₹8,00,000/yr. Max 2 girls per family. Gap after 10th/12th <= 2 years.",
+    "application_instructions": "Apply through the National Scholarship Portal with OTR ID. Submit diploma admission allotment letter, income certificate, and institute bonafide.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": ["diploma_technical"],
+    "max_income_inr": 800000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "AICTE Pragati Diploma Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "pragati-diploma-root",
+      "label": "AICTE Pragati (Technical Diploma) Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "pragati-dip-gender",
+          "category": "other",
+          "field": "gender",
+          "operator": "eq",
+          "value": "Female",
+          "requiresOfficialVerification": false,
+          "label": "Girl Student Requirement",
+          "passExplanation": "Applicant is a female student.",
+          "failExplanation": "AICTE Pragati is exclusively for female students.",
+          "missingExplanation": "Please specify gender in your profile."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-dip-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "eq",
+          "value": "diploma_technical",
+          "requiresOfficialVerification": false,
+          "label": "Technical Diploma Program",
+          "passExplanation": "Enrolled in a technical diploma program.",
+          "failExplanation": "Must be pursuing a technical diploma course.",
+          "missingExplanation": "Select your education level as Technical Diploma."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-dip-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 800000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹8,00,000",
+          "passExplanation": "Annual family income is within ₹8,00,000 ceiling.",
+          "failExplanation": "Annual family income exceeds ₹8,00,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Current-year Income certificate from Tehsildar required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-dip-aicte-inst",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "aicte_approved",
+          "requiresOfficialVerification": true,
+          "label": "AICTE-Approved Polytechnic",
+          "passExplanation": "Studying in an AICTE-approved polytechnic.",
+          "failExplanation": "Institution must be AICTE-approved.",
+          "missingExplanation": "Select institution type.",
+          "verificationNote": "Institute Nodal Officer must verify AICTE approval on portal."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pragati-dip-no-other",
+          "category": "other",
+          "field": "receiving_other_scholarship",
+          "operator": "eq",
+          "value": false,
+          "requiresOfficialVerification": false,
+          "label": "No Concurrent Central/State Scholarship",
+          "passExplanation": "Not receiving other conflicting government scholarships.",
+          "failExplanation": "Cannot hold concurrent central/state scholarships.",
+          "missingExplanation": "Indicate if you receive another scholarship."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Class 10 Mark Sheet",
+        "specification_notes": "Proving qualifying examination for polytechnic admission.",
+        "is_mandatory": true,
+        "issuing_authority": "State / Central School Board",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Annual Family Income Certificate",
+        "specification_notes": "Issued by Tehsildar, annual income <= ₹8,00,000.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Department",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Polytechnic Admission Allotment Letter",
+        "specification_notes": "Centralized admission allotment letter for diploma seat.",
+        "is_mandatory": true,
+        "issuing_authority": "State Technical Board / Polytechnic Directorate",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "NSP AICTE Pragati Diploma Scheme Guidelines",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-03",
+    "slug": "aicte-saksham-degree",
+    "name": "AICTE Saksham Scholarship Scheme for Specially Abled Student (Technical Degree)",
+    "provider_name": "AICTE, Ministry of Education",
+    "provider_type": "statutory_body_aicte_ugc",
+    "funding_type": "need_welfare_based",
+    "description": "Scholarship for specially abled students pursuing technical education at Degree level. Designed to encourage differently-abled students with >= 40% disability to pursue professional engineering and technology courses.",
+    "benefits_summary": "₹50,000 per annum for every year of study towards tuition fee, computer purchase, books, and assistive devices.",
+    "max_annual_benefit_inr": 50000,
+    "eligibility_summary": "Specially abled students with disability >= 40% admitted to 1st year Degree or 2nd year Lateral Entry in AICTE-approved institution. Family income <= ₹8,00,000 per annum.",
+    "application_instructions": "Apply on National Scholarship Portal with UDID card / Disability Certificate and centralized admission allotment letter.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": ["undergraduate_technical"],
+    "max_income_inr": 800000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "AICTE Saksham Degree Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "saksham-degree-root",
+      "label": "AICTE Saksham (Technical Degree) Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "saksham-disability",
+          "category": "other",
+          "field": "has_disability_40_percent",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": true,
+          "label": "Disability >= 40%",
+          "passExplanation": "Applicant has certified disability of 40% or above.",
+          "failExplanation": "Must possess certified disability of at least 40%.",
+          "missingExplanation": "Indicate disability status in profile.",
+          "verificationNote": "Requires Unique Disability ID (UDID) or disability certificate from competent medical board."
+        },
+        {
+          "type": "CONDITION",
+          "id": "saksham-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "eq",
+          "value": "undergraduate_technical",
+          "requiresOfficialVerification": false,
+          "label": "Technical Degree Enrollment",
+          "passExplanation": "Enrolled in undergraduate technical degree course.",
+          "failExplanation": "Must be pursuing an undergraduate technical degree.",
+          "missingExplanation": "Select your education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "saksham-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 800000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹8,00,000",
+          "passExplanation": "Annual family income is within ₹8,00,000 limit.",
+          "failExplanation": "Annual family income exceeds ₹8,00,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Income certificate issued by Tehsildar required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "saksham-aicte-inst",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "aicte_approved",
+          "requiresOfficialVerification": true,
+          "label": "AICTE-Approved Institution",
+          "passExplanation": "Institution is AICTE approved.",
+          "failExplanation": "Institution must hold AICTE approval.",
+          "missingExplanation": "Select institution type.",
+          "verificationNote": "Institute Nodal Officer must confirm current AICTE approval."
+        },
+        {
+          "type": "CONDITION",
+          "id": "saksham-no-other",
+          "category": "other",
+          "field": "receiving_other_scholarship",
+          "operator": "eq",
+          "value": false,
+          "requiresOfficialVerification": false,
+          "label": "No Concurrent Scholarship",
+          "passExplanation": "Not receiving other conflicting scholarships.",
+          "failExplanation": "Cannot hold other central/state scholarships concurrently.",
+          "missingExplanation": "Confirm scholarship receipt status."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Disability Certificate / UDID Card",
+        "specification_notes": "Valid certificate from competent medical authority certifying disability >= 40%.",
+        "is_mandatory": true,
+        "issuing_authority": "Chief Medical Officer (CMO) / Medical Board / UDID Portal",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Issued by Tehsildar or competent revenue authority <= ₹8,00,000.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Department",
+        "sort_order": 2
+      },
+      {
+        "document_name": "CAP Allotment Letter & Fee Receipt",
+        "specification_notes": "Centralized admission allotment letter for technical degree.",
+        "is_mandatory": true,
+        "issuing_authority": "State Counselling Board",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "AICTE Saksham Scholarship Guidelines",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-04",
+    "slug": "aicte-swanath",
+    "name": "AICTE Swanath Scholarship Scheme (Technical Degree & Diploma)",
+    "provider_name": "AICTE, Ministry of Education",
+    "provider_type": "statutory_body_aicte_ugc",
+    "funding_type": "need_welfare_based",
+    "description": "Financial assistance for orphaned children, wards of parents who died of COVID-19, and wards of Armed Forces/Central Paramilitary Forces martyred in action pursuing technical education at Degree or Diploma level in AICTE approved institutions.",
+    "benefits_summary": "₹50,000 per annum for every year of study (2,000 total slots: 1,000 Degree + 1,000 Diploma) towards college fee, books, and living expenses.",
+    "max_annual_benefit_inr": 50000,
+    "eligibility_summary": "Orphan, ward of COVID-19 deceased parents, or ward of martyred personnel. Enrolled in 1st to 4th year in AICTE-approved Degree/Diploma institute. Family income <= ₹8,00,000/yr.",
+    "application_instructions": "Apply on NSP portal. Attach death certificate of parents / martyr certificate from competent military/police authority and institute bonafide.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_technical",
+      "diploma_technical"
+    ],
+    "max_income_inr": 800000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "AICTE Swanath Scheme Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "swanath-root",
+      "label": "AICTE Swanath Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "swanath-status",
+          "category": "other",
+          "field": "is_orphan_or_martyr_ward",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": true,
+          "label": "Orphan / COVID-19 / Martyr Ward Status",
+          "passExplanation": "Applicant is an orphan, ward of parents deceased due to COVID-19, or ward of martyred personnel.",
+          "failExplanation": "Scheme is exclusively for orphans, COVID-19 affected wards, or martyr wards.",
+          "missingExplanation": "Indicate special ward status in profile.",
+          "verificationNote": "Official Death certificate of parents / Martyrdom certificate from Ministry of Defence or Home Affairs required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "swanath-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": ["undergraduate_technical", "diploma_technical"],
+          "requiresOfficialVerification": false,
+          "label": "Technical Degree or Diploma Program",
+          "passExplanation": "Enrolled in AICTE technical degree or diploma course.",
+          "failExplanation": "Must be pursuing a technical degree or diploma program.",
+          "missingExplanation": "Specify your education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "swanath-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 800000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹8,00,000",
+          "passExplanation": "Annual family income is <= ₹8,00,000.",
+          "failExplanation": "Annual family income exceeds ₹8,00,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Valid income certificate from Tehsildar required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "swanath-aicte-inst",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "aicte_approved",
+          "requiresOfficialVerification": true,
+          "label": "AICTE-Approved Institution",
+          "passExplanation": "Enrolled in AICTE-approved institution.",
+          "failExplanation": "Institution must be AICTE approved.",
+          "missingExplanation": "Select institution type.",
+          "verificationNote": "INO must confirm AICTE approval status on NSP."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Orphan / COVID Death / Martyr Certificate",
+        "specification_notes": "Death certificate of both parents OR martyr certificate from Defence/CAPF authority.",
+        "is_mandatory": true,
+        "issuing_authority": "Municipal Registrar / Ministry of Defence / Home Affairs",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Family income not exceeding ₹8,00,000 per annum.",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar / Competent Authority",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Bonafide Certificate from College",
+        "specification_notes": "Issued by institute principal verifying regular full-time technical study.",
+        "is_mandatory": true,
+        "issuing_authority": "College Principal / Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "AICTE Swanath Scholarship Guidelines",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-05",
+    "slug": "ugc-nspgs",
+    "name": "National Scholarship for Post Graduate Studies (NSPGS)",
+    "provider_name": "University Grants Commission (UGC)",
+    "provider_type": "statutory_body_aicte_ugc",
+    "funding_type": "merit_based",
+    "description": "UGC national scheme to provide financial assistance to 10,000 eligible students pursuing first postgraduate degree in recognized universities and colleges in India. 30% slots are earmarked for women candidates.",
+    "benefits_summary": "₹15,000 per month for 10 months per year (₹1,50,000 per annum; ₹3,00,000 total across 2 years of PG degree).",
+    "max_annual_benefit_inr": 150000,
+    "eligibility_summary": "1st year full-time regular PG students in UGC-recognized institutions with valid AISHE code. Age < 30 years at admission. First PG degree. No income limit.",
+    "application_instructions": "Submit fresh application on National Scholarship Portal with OTR ID. Submit Class 10 DOB certificate, Bachelor degree mark sheet, and AISHE-linked institute bonafide.",
+    "application_open_date": "2026-09-16",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://www.ugc.gov.in/Scholarships/stu_Scholarship6",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "postgraduate_general",
+      "postgraduate_technical",
+      "integrated_five_year"
+    ],
+    "max_income_inr": null,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "UGC NSPGS Guidelines AY 2026-27, UGC Notification F.No.1-6/2022(SCT)",
+    "rule_ast": {
+      "type": "AND",
+      "id": "nspgs-root",
+      "label": "UGC National Scholarship for Post Graduate Studies (NSPGS)",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "nspgs-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": [
+            "postgraduate_general",
+            "postgraduate_technical",
+            "integrated_five_year"
+          ],
+          "requiresOfficialVerification": false,
+          "label": "Postgraduate Degree Level",
+          "passExplanation": "Pursuing a postgraduate degree (or PG component of an integrated degree).",
+          "failExplanation": "Scheme is restricted to postgraduate degree students.",
+          "missingExplanation": "Specify your education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nspgs-first-year",
+          "category": "education",
+          "field": "course_year",
+          "operator": "eq",
+          "value": 1,
+          "requiresOfficialVerification": false,
+          "label": "First Year of PG Program",
+          "passExplanation": "Admitted in the 1st year of the postgraduate program.",
+          "failExplanation": "Only first-year postgraduate students can submit a fresh application.",
+          "missingExplanation": "Specify your current year of study."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nspgs-first-pg",
+          "category": "academic",
+          "field": "is_first_pg_degree",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": false,
+          "label": "First Postgraduate Degree",
+          "passExplanation": "Pursuing first postgraduate degree.",
+          "failExplanation": "Applicants who already hold a postgraduate degree are ineligible.",
+          "missingExplanation": "Confirm whether this is your first postgraduate degree."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nspgs-study-mode",
+          "category": "course",
+          "field": "study_mode",
+          "operator": "eq",
+          "value": "regular_full_time",
+          "requiresOfficialVerification": false,
+          "label": "Regular / Full-Time Mode",
+          "passExplanation": "Enrolled in regular, full-time mode.",
+          "failExplanation": "Distance, correspondence, part-time, and open mode students are ineligible.",
+          "missingExplanation": "Specify your mode of study."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nspgs-age-limit",
+          "category": "other",
+          "field": "age_years",
+          "operator": "lt",
+          "value": 30,
+          "requiresOfficialVerification": true,
+          "label": "Age Below 30 Years at PG Admission",
+          "passExplanation": "Applicant is under 30 years of age.",
+          "failExplanation": "Applicant must be below 30 years of age on the date of PG admission.",
+          "missingExplanation": "Enter your age in years.",
+          "verificationNote": "Institute verifies exact age at admission date against Class 10 / Birth Certificate."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nspgs-aishe",
+          "category": "course",
+          "field": "has_valid_aishe_code",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": true,
+          "label": "UGC-Recognized Institution with Valid AISHE Code",
+          "passExplanation": "Institution has a valid AISHE code.",
+          "failExplanation": "Institution must possess a valid AISHE code on NSP.",
+          "missingExplanation": "Confirm whether your institution is AISHE-registered.",
+          "verificationNote": "Institutional Nodal Officer (INO) must verify enrollment on NSP by Dec 15, 2026."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Class 10 Certificate (Proof of Age)",
+        "specification_notes": "Verifying age below 30 years as on date of admission.",
+        "is_mandatory": true,
+        "issuing_authority": "School Board",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Undergraduate Degree Mark Sheets & Certificate",
+        "specification_notes": "Qualifying graduation mark sheets.",
+        "is_mandatory": true,
+        "issuing_authority": "Recognized University",
+        "sort_order": 2
+      },
+      {
+        "document_name": "PG Bonafide Certificate with AISHE Code",
+        "specification_notes": "Confirming 1st year regular full-time PG enrollment.",
+        "is_mandatory": true,
+        "issuing_authority": "University / College Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "UGC NSPGS Official Scheme Page",
+        "source_url": "https://www.ugc.gov.in/Scholarships/stu_Scholarship6",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      },
+      {
+        "source_title": "National Scholarship Portal Application Page",
+        "source_url": "https://scholarships.gov.in/",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-06",
+    "slug": "ugc-ishan-uday",
+    "name": "Ishan Uday Special Scholarship Scheme for North Eastern Region (NER)",
+    "provider_name": "University Grants Commission (UGC)",
+    "provider_type": "statutory_body_aicte_ugc",
+    "funding_type": "merit_based",
+    "description": "Special scholarship scheme administered by UGC to provide 10,000 fresh annual scholarships for students of North Eastern Region pursuing general degree, technical, and professional undergraduate courses.",
+    "benefits_summary": "₹8,000 per month for 10 months per year (₹80,000 per annum) for general and professional degree courses.",
+    "max_annual_benefit_inr": 80000,
+    "eligibility_summary": "Domicile of 8 NER States (Assam, Arunachal Pradesh, Manipur, Meghalaya, Mizoram, Nagaland, Tripura, Sikkim). Admitted to 1st year UG course. Family income <= ₹4,50,000/yr.",
+    "application_instructions": "Apply on National Scholarship Portal with State Domicile Certificate from competent NER district authority and Tehsildar income certificate.",
+    "application_open_date": "2026-09-16",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical"
+    ],
+    "max_income_inr": 450000,
+    "allowed_states": [
+      "Assam",
+      "Arunachal Pradesh",
+      "Manipur",
+      "Meghalaya",
+      "Mizoram",
+      "Nagaland",
+      "Tripura",
+      "Sikkim"
+    ],
+    "allowed_courses": null,
+    "eligibility_source_citation": "UGC Ishan Uday Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "ishan-uday-root",
+      "label": "UGC Ishan Uday (NER) Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "ishan-domicile",
+          "category": "geographic",
+          "field": "domicile_state",
+          "operator": "in",
+          "value": [
+            "Assam",
+            "Arunachal Pradesh",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Tripura",
+            "Sikkim"
+          ],
+          "requiresOfficialVerification": true,
+          "label": "North Eastern Region (NER) Domicile",
+          "passExplanation": "Applicant is a domicile of a North Eastern Region state.",
+          "failExplanation": "Must be a permanent resident of one of the 8 North Eastern States.",
+          "missingExplanation": "Select your domicile state in your profile.",
+          "verificationNote": "Permanent Resident Certificate (PRC) / Domicile Certificate issued by Deputy Commissioner / Competent District Authority required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "ishan-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": ["undergraduate_general", "undergraduate_technical"],
+          "requiresOfficialVerification": false,
+          "label": "Undergraduate Degree Program",
+          "passExplanation": "Enrolled in an undergraduate degree program.",
+          "failExplanation": "Must be enrolled in an undergraduate degree course.",
+          "missingExplanation": "Specify your current education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "ishan-first-year",
+          "category": "education",
+          "field": "course_year",
+          "operator": "eq",
+          "value": 1,
+          "requiresOfficialVerification": false,
+          "label": "First Year of UG Program",
+          "passExplanation": "Admitted to 1st year of college.",
+          "failExplanation": "Fresh scholarship is only for first-year undergraduate students.",
+          "missingExplanation": "Specify course year."
+        },
+        {
+          "type": "CONDITION",
+          "id": "ishan-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 450000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹4,50,000",
+          "passExplanation": "Annual family income is within ₹4,50,000 limit.",
+          "failExplanation": "Annual family income exceeds ₹4,50,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Requires income certificate issued by competent authority in NER state."
+        },
+        {
+          "type": "CONDITION",
+          "id": "ishan-study-mode",
+          "category": "course",
+          "field": "study_mode",
+          "operator": "eq",
+          "value": "regular_full_time",
+          "requiresOfficialVerification": false,
+          "label": "Regular Full-Time Course",
+          "passExplanation": "Pursuing regular full-time degree.",
+          "failExplanation": "Distance/correspondence courses are not eligible.",
+          "missingExplanation": "Select mode of study."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "NER Domicile / Permanent Residence Certificate (PRC)",
+        "specification_notes": "Issued by DC/ADC/Competent Revenue Authority in NER state.",
+        "is_mandatory": true,
+        "issuing_authority": "District Administration / DC Office",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Annual Family Income Certificate",
+        "specification_notes": "Gross annual family income <= ₹4,50,000.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Authority / Tehsildar",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Class 12 Passing Certificate & Mark Sheet",
+        "specification_notes": "Proving completion of senior secondary education.",
+        "is_mandatory": true,
+        "issuing_authority": "State or Central Secondary Board",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "UGC Ishan Uday Scheme Information on NSP",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-07",
+    "slug": "pm-usp-csss",
+    "name": "PM-USP Central Sector Scheme of Scholarship for College and University Students (CSSS)",
+    "provider_name": "Dept. of Higher Education, MoE",
+    "provider_type": "central_government",
+    "funding_type": "merit_cum_means",
+    "description": "Central sector scheme by Ministry of Education for meritorious students from low-income families pursuing regular graduate and postgraduate courses in colleges and universities.",
+    "benefits_summary": "₹12,000 per annum for 1st to 3rd year of undergraduate study; ₹20,000 per annum for postgraduate study and 4th/5th year of professional courses.",
+    "max_annual_benefit_inr": 20000,
+    "eligibility_summary": "Above 80th percentile in Class 12 board examination. Regular course in recognized college. Family income <= ₹4,50,000 per annum. (Note: Fresh applications pending board merit release for AY 2026-27).",
+    "application_instructions": "Renewal applications processed on NSP. Fresh applicants should check portal for release of State Board 80th percentile merit quotas.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-10-31T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-11-15T18:29:59.000Z",
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": false,
+    "fresh_applications_open": false,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/public/schemeGuidelines/FAQ_DOHE_CSSS.pdf",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "verified_renewal_only",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical",
+      "postgraduate_general",
+      "postgraduate_technical",
+      "integrated_five_year"
+    ],
+    "max_income_inr": 450000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "Dept of Higher Education CSSS FAQ & Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "pm-usp-csss-root",
+      "label": "PM-USP CSSS Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "csss-percentile",
+          "category": "academic",
+          "field": "class_12_top_20_percentile",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": true,
+          "label": "Class 12 Above 80th Percentile (State Board Quota)",
+          "passExplanation": "Scored in top 20th percentile (above 80th percentile) in Class 12 board exam.",
+          "failExplanation": "Must fall in the top 20th percentile of successful candidates in Class 12 board.",
+          "missingExplanation": "Confirm Class 12 board percentile status in profile.",
+          "verificationNote": "Board of Higher Secondary Education official merit list verification required on NSP."
+        },
+        {
+          "type": "CONDITION",
+          "id": "csss-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 450000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹4,50,000",
+          "passExplanation": "Annual family income is within ₹4,50,000 limit.",
+          "failExplanation": "Annual family income exceeds ₹4,50,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Current-year Tehsildar income certificate required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "csss-study-mode",
+          "category": "course",
+          "field": "study_mode",
+          "operator": "eq",
+          "value": "regular_full_time",
+          "requiresOfficialVerification": false,
+          "label": "Regular Full-Time Course",
+          "passExplanation": "Pursuing regular full-time course.",
+          "failExplanation": "Distance, correspondence, or diploma courses not eligible.",
+          "missingExplanation": "Specify study mode."
+        },
+        {
+          "type": "CONDITION",
+          "id": "csss-no-other",
+          "category": "other",
+          "field": "receiving_other_scholarship",
+          "operator": "eq",
+          "value": false,
+          "requiresOfficialVerification": false,
+          "label": "No Concurrent Central/State Scholarship",
+          "passExplanation": "Not receiving other scholarship benefits.",
+          "failExplanation": "Holding another central/state scholarship is prohibited.",
+          "missingExplanation": "Confirm if you receive another scholarship."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Class 12 Mark Sheet & Board Percentile Verification",
+        "specification_notes": "Proving placement above 80th percentile in respective state examination board.",
+        "is_mandatory": true,
+        "issuing_authority": "State Education Board / CBSE / CISCE",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Annual family income <= ₹4,50,000 issued by Tehsildar.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Authority",
+        "sort_order": 2
+      },
+      {
+        "document_name": "College Admission Bonafide Certificate",
+        "specification_notes": "Issued by college principal confirming regular full-time degree enrollment.",
+        "is_mandatory": true,
+        "issuing_authority": "College Principal",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "PM-USP CSSS Official Scheme Guidelines & FAQ",
+        "source_url": "https://scholarships.gov.in/public/schemeGuidelines/FAQ_DOHE_CSSS.pdf",
+        "guideline_pdf_url": "https://scholarships.gov.in/public/schemeGuidelines/FAQ_DOHE_CSSS.pdf",
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-08",
+    "slug": "pm-yasasvi-top-class",
+    "name": "PM YASASVI Central Sector Scheme of Top Class Education in Colleges (OBC, EBC, DNT)",
+    "provider_name": "Ministry of Social Justice & Empowerment",
+    "provider_type": "central_government",
+    "funding_type": "merit_based",
+    "description": "Central sector scheme to recognize and promote quality higher education among OBC, EBC, and DNT students by providing financial support in notified premier institutions across India.",
+    "benefits_summary": "Full tuition fee reimbursement up to ₹2,00,000 per annum plus living expenses, books, and computer allowance.",
+    "max_annual_benefit_inr": 200000,
+    "eligibility_summary": "OBC, EBC, or DNT category. Admitted beyond Class 12 to a notified premier Top Class institution. Family income <= ₹2,50,000 per annum.",
+    "application_instructions": "Apply through National Scholarship Portal with OTR ID, category certificate, and admission confirmation from notified institution.",
+    "application_open_date": "2026-10-22",
+    "student_deadline_at": "2026-10-31T18:29:59.000Z",
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "expired",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical"
+    ],
+    "max_income_inr": 250000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "MSJE PM YASASVI Top Class College Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "yasasvi-root",
+      "label": "PM YASASVI Top Class Education Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "yasasvi-category",
+          "category": "other",
+          "field": "social_category",
+          "operator": "in",
+          "value": ["OBC", "EWS", "DNT"],
+          "requiresOfficialVerification": true,
+          "label": "OBC / EBC / DNT Category",
+          "passExplanation": "Belongs to OBC, EBC, or DNT category.",
+          "failExplanation": "Scheme is restricted to OBC, EBC, or DNT students.",
+          "missingExplanation": "Specify social category.",
+          "verificationNote": "Valid caste / non-creamy layer certificate required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "yasasvi-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 250000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹2,50,000",
+          "passExplanation": "Annual family income is within ₹2,50,000 ceiling.",
+          "failExplanation": "Annual family income exceeds ₹2,50,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Current financial year income certificate from Tehsildar required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "yasasvi-inst-type",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "notified_top_class_institute",
+          "requiresOfficialVerification": true,
+          "label": "Enrolled in Notified Top Class Institution",
+          "passExplanation": "Enrolled in an institution notified under PM YASASVI top class scheme.",
+          "failExplanation": "Must be enrolled in a notified top-class institute.",
+          "missingExplanation": "Select institution type.",
+          "verificationNote": "Institution must verify admission in notified institute list."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "OBC / EBC / DNT Caste Certificate",
+        "specification_notes": "Issued by competent revenue authority.",
+        "is_mandatory": true,
+        "issuing_authority": "Sub-Divisional Magistrate / Tehsildar",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Family income not exceeding ₹2,50,000 per annum.",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Notified Institute Admission Proof & Fee Schedule",
+        "specification_notes": "Proof of admission to notified institute.",
+        "is_mandatory": true,
+        "issuing_authority": "Institute Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "MSJE PM YASASVI Top Class Notification",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-09",
+    "slug": "sc-top-class",
+    "name": "Central Sector Scholarship of Top Class Education for SC Students",
+    "provider_name": "Ministry of Social Justice & Empowerment",
+    "provider_type": "central_government",
+    "funding_type": "merit_cum_means",
+    "description": "Scholarship to provide financial support to meritorious Scheduled Caste students admitted to notified premier institutes of higher education (IITs, IIMs, NITs, AIIMS, NLUs, etc.).",
+    "benefits_summary": "Full tuition fee reimbursement up to ₹2,00,000/yr (full fee for IITs/NITs) + ₹3,000/month living expenses + ₹5,000/yr books + ₹45,000 one-time laptop allowance.",
+    "max_annual_benefit_inr": 286000,
+    "eligibility_summary": "Scheduled Caste (SC) category. Admitted to notified premier Top Class institution. Annual family income <= ₹8,00,000.",
+    "application_instructions": "Submit application on National Scholarship Portal with SC caste certificate, Tehsildar income certificate, and admission confirmation from notified institution.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-10-31T18:29:59.000Z",
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "expired",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical",
+      "postgraduate_general",
+      "postgraduate_technical"
+    ],
+    "max_income_inr": 800000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "MSJE Top Class Education Scheme for SC Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "sc-top-class-root",
+      "label": "Top Class Education for SC Students Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "sc-category",
+          "category": "other",
+          "field": "social_category",
+          "operator": "eq",
+          "value": "SC",
+          "requiresOfficialVerification": true,
+          "label": "Scheduled Caste (SC) Category",
+          "passExplanation": "Belongs to Scheduled Caste (SC) category.",
+          "failExplanation": "Scheme is exclusively for Scheduled Caste students.",
+          "missingExplanation": "Select social category in profile.",
+          "verificationNote": "Valid SC Caste Certificate issued by competent revenue authority required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "sc-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 800000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹8,00,000",
+          "passExplanation": "Annual family income is within ₹8,00,000 ceiling.",
+          "failExplanation": "Annual family income exceeds ₹8,00,000 limit.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Tehsildar income certificate required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "sc-inst-type",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "notified_top_class_institute",
+          "requiresOfficialVerification": true,
+          "label": "Notified Premier Top Class Institution",
+          "passExplanation": "Enrolled in notified premier institute.",
+          "failExplanation": "Must be enrolled in one of the notified premier institutes.",
+          "missingExplanation": "Select institution accreditation type.",
+          "verificationNote": "College INO must verify admission in notified list."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "SC Caste Certificate",
+        "specification_notes": "Issued by District Magistrate / Tehsildar in applicant's name.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Authority",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Annual family income <= ₹8,00,000.",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Admission Confirmation & Fee Receipt",
+        "specification_notes": "From notified top class institution.",
+        "is_mandatory": true,
+        "issuing_authority": "Institute Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "MSJE SC Top Class Scheme Portal",
+        "source_url": "https://scholarships.gov.in/",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-10",
+    "slug": "st-higher-education",
+    "name": "National Fellowship and Scholarship for Higher Education of ST Students",
+    "provider_name": "Ministry of Tribal Affairs",
+    "provider_type": "central_government",
+    "funding_type": "merit_cum_means",
+    "description": "Scheme to provide financial support to meritorious Scheduled Tribe students pursuing graduation and postgraduation in 252 notified premier institutes across India.",
+    "benefits_summary": "Full tuition fee reimbursement up to ₹2,50,000 per annum plus living expenses, books, and assistive allowances.",
+    "max_annual_benefit_inr": 250000,
+    "eligibility_summary": "Scheduled Tribe (ST) category. Enrolled in one of the 252 notified institutes. Annual family income <= ₹6,00,000.",
+    "application_instructions": "Apply through National Scholarship Portal with ST certificate, income certificate, and institute admission letter.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-10-31T18:29:59.000Z",
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "expired",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical",
+      "postgraduate_general",
+      "postgraduate_technical"
+    ],
+    "max_income_inr": 600000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "Ministry of Tribal Affairs National ST Scholarship Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "st-higher-root",
+      "label": "ST Higher Education Scholarship Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "st-category",
+          "category": "other",
+          "field": "social_category",
+          "operator": "eq",
+          "value": "ST",
+          "requiresOfficialVerification": true,
+          "label": "Scheduled Tribe (ST) Category",
+          "passExplanation": "Belongs to Scheduled Tribe (ST) category.",
+          "failExplanation": "Scheme is exclusively for Scheduled Tribe students.",
+          "missingExplanation": "Select social category in profile.",
+          "verificationNote": "Valid ST Tribe Certificate from competent authority required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "st-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 600000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹6,00,000",
+          "passExplanation": "Annual family income is within ₹6,00,000 ceiling.",
+          "failExplanation": "Annual family income exceeds ₹6,00,000 limit.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Tehsildar income certificate required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "st-inst-type",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "eq",
+          "value": "notified_top_class_institute",
+          "requiresOfficialVerification": true,
+          "label": "Enrolled in 252 Notified Institutes",
+          "passExplanation": "Enrolled in a recognized notified institute.",
+          "failExplanation": "Institution must be among the 252 notified institutes.",
+          "missingExplanation": "Select institution type.",
+          "verificationNote": "INO must confirm enrollment in notified institute list."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "ST Certificate",
+        "specification_notes": "Issued by District Magistrate or competent revenue officer.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Department",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Family income not exceeding ₹6,00,000 per annum.",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Admission Confirmation Letter",
+        "specification_notes": "From 252 notified institutes.",
+        "is_mandatory": true,
+        "issuing_authority": "Institute Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "MoTA National ST Fellowship and Scholarship Portal",
+        "source_url": "https://scholarships.gov.in/",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-11",
+    "slug": "depwd-post-matric",
+    "name": "Post-Matric Scholarship for Students with Disabilities (DEPwD)",
+    "provider_name": "Dept. of Empowerment of Persons with Disabilities",
+    "provider_type": "central_government",
+    "funding_type": "need_welfare_based",
+    "description": "Centrally sponsored scholarship to provide financial assistance to students with certified disabilities pursuing post-matric studies from Class 11 up to Postgraduate degree.",
+    "benefits_summary": "Up to ₹1,40,000 per annum towards fee reimbursement, monthly maintenance allowance, and disability assistive allowance.",
+    "max_annual_benefit_inr": 140000,
+    "eligibility_summary": "Disability >= 40% with valid UDID or medical certificate. Enrolled from Class 11 to PG in recognized school/college. Annual family income <= ₹2,50,000.",
+    "application_instructions": "Apply through National Scholarship Portal with UDID card, disability medical certificate, and income certificate.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-10-31T18:29:59.000Z",
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "expired",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "school_class_11_12",
+      "diploma_technical",
+      "undergraduate_general",
+      "undergraduate_technical",
+      "postgraduate_general",
+      "postgraduate_technical"
+    ],
+    "max_income_inr": 250000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "DEPwD Post-Matric Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "depwd-root",
+      "label": "DEPwD Post-Matric Scholarship Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "depwd-disability",
+          "category": "other",
+          "field": "has_disability_40_percent",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": true,
+          "label": "Disability >= 40%",
+          "passExplanation": "Has certified disability of 40% or above.",
+          "failExplanation": "Certified disability must be at least 40%.",
+          "missingExplanation": "Specify disability status.",
+          "verificationNote": "Valid UDID card or medical board certificate required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "depwd-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 250000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹2,50,000",
+          "passExplanation": "Annual family income is within ₹2,50,000 limit.",
+          "failExplanation": "Annual family income exceeds ₹2,50,000 ceiling.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Tehsildar income certificate required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "depwd-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": [
+            "school_class_11_12",
+            "diploma_technical",
+            "undergraduate_general",
+            "undergraduate_technical",
+            "postgraduate_general",
+            "postgraduate_technical"
+          ],
+          "requiresOfficialVerification": false,
+          "label": "Post-Matric Level Study",
+          "passExplanation": "Enrolled in post-matric studies (Class 11 to PG).",
+          "failExplanation": "Must be pursuing post-matriculation education.",
+          "missingExplanation": "Specify education level."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Disability Certificate / UDID Card",
+        "specification_notes": "Disability >= 40% certified by competent authority.",
+        "is_mandatory": true,
+        "issuing_authority": "Chief Medical Officer / UDID Portal",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Annual family income not exceeding ₹2,50,000.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Department",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Institution Bonafide Certificate",
+        "specification_notes": "Issued by recognized school/college head.",
+        "is_mandatory": true,
+        "issuing_authority": "Principal / Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "DEPwD Post-Matric Guidelines on NSP",
+        "source_url": "https://scholarships.gov.in/",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-12",
+    "slug": "pmss-capf",
+    "name": "Prime Minister's Scholarship Scheme (PMSS) for CAPF, Assam Rifles & Martyred Police Wards",
+    "provider_name": "Ministry of Home Affairs (WARB)",
+    "provider_type": "central_government",
+    "funding_type": "merit_based",
+    "description": "Prime Minister's Scholarship Scheme to encourage technical and professional higher education for dependent wards and widows of deceased or retired Central Armed Police Forces (CAPF) and Assam Rifles personnel, and police personnel martyred during terror/naxal attacks.",
+    "benefits_summary": "₹3,000 per month for female students (₹36,000 per annum); ₹2,500 per month for male students (₹30,000 per annum) for professional degrees.",
+    "max_annual_benefit_inr": 36000,
+    "eligibility_summary": "Dependent ward or widow of deceased/retired CAPF/Assam Rifles/martyred police personnel. Enrolled in 1st year regular professional/technical degree. No family income limit.",
+    "application_instructions": "Submit online form on NSP. Provide WARB certificate / Ex-servicemen service book copy / discharge certificate and Bonafide from professional college.",
+    "application_open_date": "2026-06-01",
+    "student_deadline_at": "2026-11-30T18:29:59.000Z",
+    "institute_verification_deadline_at": "2026-12-15T18:29:59.000Z",
+    "state_nodal_deadline_at": "2026-12-31T18:29:59.000Z",
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/All-Scholarships",
+    "official_application_url": "https://scholarships.gov.in/All-Scholarships",
+    "verification_status": "verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical"
+    ],
+    "max_income_inr": null,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "MHA WARB PMSS Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "pmss-root",
+      "label": "PMSS CAPF Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "pmss-ward-status",
+          "category": "other",
+          "field": "is_orphan_or_martyr_ward",
+          "operator": "eq",
+          "value": true,
+          "requiresOfficialVerification": true,
+          "label": "CAPF / Assam Rifles / Martyred Police Ward Status",
+          "passExplanation": "Dependent ward or widow of CAPF, Assam Rifles, or martyred police personnel.",
+          "failExplanation": "Scheme is exclusively for wards/widows of CAPF & Assam Rifles personnel.",
+          "missingExplanation": "Confirm CAPF/Martyr ward status in profile.",
+          "verificationNote": "Requires Service Certificate / Discharge Book from competent Force Headquarter or Welfare Directorate."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pmss-first-year",
+          "category": "education",
+          "field": "course_year",
+          "operator": "eq",
+          "value": 1,
+          "requiresOfficialVerification": false,
+          "label": "First Year Admission",
+          "passExplanation": "Admitted to 1st year of professional course.",
+          "failExplanation": "Fresh PMSS application is open only for 1st year professional degree students.",
+          "missingExplanation": "Specify year of study."
+        },
+        {
+          "type": "CONDITION",
+          "id": "pmss-study-mode",
+          "category": "course",
+          "field": "study_mode",
+          "operator": "eq",
+          "value": "regular_full_time",
+          "requiresOfficialVerification": false,
+          "label": "Regular Full-Time Professional Course",
+          "passExplanation": "Pursuing regular full-time professional course.",
+          "failExplanation": "Distance learning and non-professional courses are ineligible.",
+          "missingExplanation": "Select study mode."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Service / Discharge Certificate / PPO",
+        "specification_notes": "Issued by CAPF / Assam Rifles authority confirming parent's service category.",
+        "is_mandatory": true,
+        "issuing_authority": "Force Headquarter / Welfare and Rehabilitation Board (WARB)",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Class 12 Mark Sheet",
+        "specification_notes": "Minimum 60% marks in Class 12 / qualifying diploma exam.",
+        "is_mandatory": true,
+        "issuing_authority": "School Board",
+        "sort_order": 2
+      },
+      {
+        "document_name": "College Bonafide Certificate",
+        "specification_notes": "Proving regular full-time technical or professional degree admission.",
+        "is_mandatory": true,
+        "issuing_authority": "College Principal",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "MHA WARB PMSS Scheme Guidelines",
+        "source_url": "https://scholarships.gov.in/All-Scholarships",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-13",
+    "slug": "nmmss-school",
+    "name": "National Means-cum-Merit Scholarship Scheme (NMMSS)",
+    "provider_name": "Dept. of School Education & Literacy, MoE",
+    "provider_type": "central_government",
+    "funding_type": "merit_cum_means",
+    "description": "Centrally sponsored scheme to award scholarships to meritorious students of economically weaker sections to arrest dropouts after Class 8 and encourage them to complete secondary and higher secondary education (Classes 9 to 12).",
+    "benefits_summary": "₹12,000 per annum (₹1,000 per month) for 4 years from Class 9 through Class 12.",
+    "max_annual_benefit_inr": 12000,
+    "eligibility_summary": "Enrolled in Class 9 in government, local body, or government-aided school. Passed Class 8 with >= 55% marks (50% for SC/ST). Passed State NMMSS selection test. Family income <= ₹3,50,000.",
+    "application_instructions": "Candidates qualified in the State Level NMMSS Examination must register on NSP. Portal deadline varies by State exam schedule.",
+    "application_open_date": null,
+    "student_deadline_at": null,
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": false,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.gov.in/",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "deadline_not_verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": ["school_class_9_10", "school_class_11_12"],
+    "max_income_inr": 350000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "Dept of School Education & Literacy NMMSS Guidelines AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "nmmss-root",
+      "label": "NMMSS School Scholarship Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "nmmss-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": ["school_class_9_10", "school_class_11_12"],
+          "requiresOfficialVerification": false,
+          "label": "Class 9 to 12 School Student",
+          "passExplanation": "Enrolled in Class 9, 10, 11, or 12.",
+          "failExplanation": "Must be enrolled in Class 9 through Class 12.",
+          "missingExplanation": "Select school education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nmmss-inst-type",
+          "category": "course",
+          "field": "institution_type",
+          "operator": "in",
+          "value": ["government_school", "other_recognized"],
+          "requiresOfficialVerification": true,
+          "label": "Government or Aided School",
+          "passExplanation": "Studying in a Government, Local Body, or Aided School.",
+          "failExplanation": "Students of Kendriya Vidyalayas, Navodaya Vidyalayas, and private schools are ineligible.",
+          "missingExplanation": "Select school institution type.",
+          "verificationNote": "School headmaster must verify school category on NSP."
+        },
+        {
+          "type": "CONDITION",
+          "id": "nmmss-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 350000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹3,50,000",
+          "passExplanation": "Annual family income is within ₹3,50,000 ceiling.",
+          "failExplanation": "Annual family income exceeds ₹3,50,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Valid income certificate from Tehsildar required."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Class 8 Report Card / Mark Sheet",
+        "specification_notes": "Minimum 55% marks (50% for SC/ST).",
+        "is_mandatory": true,
+        "issuing_authority": "School Headmaster",
+        "sort_order": 1
+      },
+      {
+        "document_name": "State NMMSS Exam Admit Card & Selection Roll Number",
+        "specification_notes": "Proving qualification in State NMMSS examination.",
+        "is_mandatory": true,
+        "issuing_authority": "State SCERT / Education Department",
+        "sort_order": 2
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Annual family income not exceeding ₹3,50,000.",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "National Scholarship Portal NMMSS Guidelines",
+        "source_url": "https://scholarships.gov.in/",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-14",
+    "slug": "delhi-post-matric-sc",
+    "name": "Post-Matric Scholarship for SC Students (NCT of Delhi / Centrally Sponsored)",
+    "provider_name": "Dept. for Welfare of SC/ST/OBC, Govt. of NCT of Delhi & MoSJE",
+    "provider_type": "state_government",
+    "funding_type": "need_welfare_based",
+    "description": "Centrally sponsored state scheme implemented by Govt. of NCT of Delhi to provide financial aid to Scheduled Caste students of Delhi pursuing post-matriculation courses across engineering, medical, degree, and polytechnic streams.",
+    "benefits_summary": "Full non-refundable compulsory course fee reimbursement plus monthly maintenance allowance ranging from ₹230 to ₹1,200/month.",
+    "max_annual_benefit_inr": 50000,
+    "eligibility_summary": "SC category student with Delhi domicile. Enrolled in post-matric studies in recognized university/institute. Annual family income <= ₹2,50,000.",
+    "application_instructions": "Apply via Delhi e-District Portal / National Scholarship Portal with Delhi SC certificate and fee receipt.",
+    "application_open_date": null,
+    "student_deadline_at": null,
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": false,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pmsfssd",
+    "official_application_url": "https://scholarships.gov.in/",
+    "verification_status": "deadline_not_verified",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "diploma_technical",
+      "undergraduate_general",
+      "undergraduate_technical",
+      "postgraduate_general",
+      "postgraduate_technical"
+    ],
+    "max_income_inr": 250000,
+    "allowed_states": ["Delhi"],
+    "allowed_courses": null,
+    "eligibility_source_citation": "Govt of NCT of Delhi SC Welfare Department Post-Matric Guidelines",
+    "rule_ast": {
+      "type": "AND",
+      "id": "delhi-sc-root",
+      "label": "Delhi Post-Matric SC Scholarship Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "delhi-domicile",
+          "category": "geographic",
+          "field": "domicile_state",
+          "operator": "eq",
+          "value": "Delhi",
+          "requiresOfficialVerification": true,
+          "label": "Delhi Domicile Requirement",
+          "passExplanation": "Applicant is a resident/domicile of Delhi.",
+          "failExplanation": "Must have permanent residence/domicile in Delhi.",
+          "missingExplanation": "Select domicile state.",
+          "verificationNote": "Delhi Domicile certificate from Revenue Department required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "delhi-sc-cat",
+          "category": "other",
+          "field": "social_category",
+          "operator": "eq",
+          "value": "SC",
+          "requiresOfficialVerification": true,
+          "label": "Scheduled Caste (SC) Category",
+          "passExplanation": "Belongs to Scheduled Caste category.",
+          "failExplanation": "Must belong to Scheduled Caste (SC) category.",
+          "missingExplanation": "Select social category.",
+          "verificationNote": "SC Certificate issued by SDM / Revenue Dept of Govt of NCT of Delhi required."
+        },
+        {
+          "type": "CONDITION",
+          "id": "delhi-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 250000,
+          "requiresOfficialVerification": true,
+          "label": "Annual Family Income <= ₹2,50,000",
+          "passExplanation": "Annual family income is within ₹2,50,000 limit.",
+          "failExplanation": "Annual family income exceeds ₹2,50,000.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Income certificate from SDM/Tehsildar required."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Delhi SC Caste Certificate",
+        "specification_notes": "Issued by SDM / Competent Revenue Authority of Govt of NCT of Delhi.",
+        "is_mandatory": true,
+        "issuing_authority": "Revenue Department, Govt of NCT of Delhi",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Income Certificate",
+        "specification_notes": "Family income <= ₹2,50,000 per annum.",
+        "is_mandatory": true,
+        "issuing_authority": "SDM / Tehsildar",
+        "sort_order": 2
+      },
+      {
+        "document_name": "College Fee Receipt & Bonafide Certificate",
+        "specification_notes": "Proving fee payment and enrollment in post-matric program.",
+        "is_mandatory": true,
+        "issuing_authority": "College Administration",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "myScheme Delhi Post-Matric SC Scheme",
+        "source_url": "https://www.myscheme.gov.in/schemes/pmsfssd",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": true
+      }
+    ]
+  },
+  {
+    "code": "SCH-15A",
+    "slug": "reliance-foundation-undergraduate",
+    "name": "Reliance Foundation Undergraduate Scholarships 2026–27",
+    "provider_name": "Reliance Foundation",
+    "provider_type": "private_foundation",
+    "funding_type": "merit_cum_means",
+    "description": "Prestigious philanthropic scholarship supporting 5,000 meritorious undergraduate students across all streams throughout their degree, with special priority for girls and specially-abled students.",
+    "benefits_summary": "Up to ₹2,00,000 total grant over the entire duration of undergraduate study (up to ₹50,000 per annum).",
+    "max_annual_benefit_inr": 50000,
+    "eligibility_summary": "1st year regular full-time UG student in any stream. Minimum 60% in Class 12. Household income <= ₹15,00,000 (preference < ₹2,50,000). Mandatory online Aptitude Test.",
+    "application_instructions": "Submit application on Reliance Foundation scholarships portal and appear for mandatory online Aptitude Test.",
+    "application_open_date": "2026-08-14",
+    "student_deadline_at": "2026-10-05T18:29:59.000Z",
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.reliancefoundation.org",
+    "official_application_url": "https://scholarships.reliancefoundation.org",
+    "verification_status": "expired",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "undergraduate_general",
+      "undergraduate_technical"
+    ],
+    "max_income_inr": 1500000,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "Reliance Foundation UG Scholarship Announcement AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "reliance-ug-root",
+      "label": "Reliance Foundation UG Scholarship Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "reliance-ug-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": ["undergraduate_general", "undergraduate_technical"],
+          "requiresOfficialVerification": false,
+          "label": "Undergraduate Degree Program",
+          "passExplanation": "Pursuing an undergraduate degree.",
+          "failExplanation": "Must be enrolled in an undergraduate degree course.",
+          "missingExplanation": "Select education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "reliance-ug-year",
+          "category": "education",
+          "field": "course_year",
+          "operator": "eq",
+          "value": 1,
+          "requiresOfficialVerification": false,
+          "label": "First Year of UG Degree",
+          "passExplanation": "Enrolled in 1st year of college.",
+          "failExplanation": "Only 1st year undergraduate students are eligible.",
+          "missingExplanation": "Specify course year."
+        },
+        {
+          "type": "CONDITION",
+          "id": "reliance-ug-marks",
+          "category": "academic",
+          "field": "academic_percentage",
+          "operator": "gte",
+          "value": 60,
+          "requiresOfficialVerification": false,
+          "label": "Class 12 Percentage >= 60%",
+          "passExplanation": "Class 12 academic percentage is 60% or above.",
+          "failExplanation": "Must have scored at least 60% in Class 12 board examination.",
+          "missingExplanation": "Enter Class 12 academic percentage."
+        },
+        {
+          "type": "CONDITION",
+          "id": "reliance-ug-income",
+          "category": "income",
+          "field": "annual_family_income_inr",
+          "operator": "lte",
+          "value": 1500000,
+          "requiresOfficialVerification": true,
+          "label": "Household Income <= ₹15,00,000",
+          "passExplanation": "Annual family income is within ₹15,00,000 ceiling.",
+          "failExplanation": "Annual family income exceeds ₹15,00,000 limit.",
+          "missingExplanation": "Enter annual family income.",
+          "verificationNote": "Income certificate or ITR copy required for verification."
+        },
+        {
+          "type": "CONDITION",
+          "id": "reliance-ug-test",
+          "category": "other",
+          "field": "study_mode",
+          "operator": "eq",
+          "value": "regular_full_time",
+          "requiresOfficialVerification": true,
+          "label": "Regular Full-Time & Online Aptitude Test",
+          "passExplanation": "Enrolled in regular full-time program.",
+          "failExplanation": "Must be enrolled regular full-time.",
+          "missingExplanation": "Select study mode.",
+          "verificationNote": "Must clear Reliance Foundation Online Aptitude Test."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "Class 12 Mark Sheet",
+        "specification_notes": "Minimum 60% aggregate marks.",
+        "is_mandatory": true,
+        "issuing_authority": "School Board",
+        "sort_order": 1
+      },
+      {
+        "document_name": "Family Income Proof / ITR",
+        "specification_notes": "Income certificate or Form 16 / ITR.",
+        "is_mandatory": true,
+        "issuing_authority": "Tehsildar / Income Tax Department",
+        "sort_order": 2
+      },
+      {
+        "document_name": "College Bonafide / Admission Receipt",
+        "specification_notes": "Proof of 1st year regular UG admission.",
+        "is_mandatory": true,
+        "issuing_authority": "College Registrar",
+        "sort_order": 3
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "Reliance Foundation Undergraduate Scholarship Portal",
+        "source_url": "https://scholarships.reliancefoundation.org",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": false
+      }
+    ]
+  },
+  {
+    "code": "SCH-15B",
+    "slug": "reliance-foundation-postgraduate",
+    "name": "Reliance Foundation Postgraduate Scholarships 2026–27",
+    "provider_name": "Reliance Foundation",
+    "provider_type": "private_foundation",
+    "funding_type": "merit_based",
+    "description": "Prestigious scholarship supporting 100 exceptionally talented postgraduate students in 9 Future-Ready STEM Streams (AI, CS, Math, Material Science, Renewable Energy, etc.).",
+    "benefits_summary": "Up to ₹6,00,000 total grant over the 2-year duration of postgraduate study.",
+    "max_annual_benefit_inr": 300000,
+    "eligibility_summary": "1st year regular full-time PG student in 9 STEM streams. GATE score 550-1000 OR UG CGPA >= 7.5. No income cap. Mandatory interview round.",
+    "application_instructions": "Submit application on Reliance Foundation scholarship portal. Submit GATE score or undergraduate CGPA transcript.",
+    "application_open_date": "2026-08-14",
+    "student_deadline_at": "2026-10-05T18:29:59.000Z",
+    "institute_verification_deadline_at": null,
+    "state_nodal_deadline_at": null,
+    "is_deadline_verified": true,
+    "fresh_applications_open": true,
+    "renewal_applications_open": true,
+    "official_source_url": "https://scholarships.reliancefoundation.org",
+    "official_application_url": "https://scholarships.reliancefoundation.org",
+    "verification_status": "expired",
+    "last_verified_at": "2026-11-04T00:00:00.000Z",
+    "is_active": true,
+    "allowed_education_levels": [
+      "postgraduate_general",
+      "postgraduate_technical"
+    ],
+    "max_income_inr": null,
+    "allowed_states": null,
+    "allowed_courses": null,
+    "eligibility_source_citation": "Reliance Foundation PG Scholarship Announcement AY 2026-27",
+    "rule_ast": {
+      "type": "AND",
+      "id": "reliance-pg-root",
+      "label": "Reliance Foundation PG Scholarship Core Eligibility",
+      "children": [
+        {
+          "type": "CONDITION",
+          "id": "reliance-pg-edu-level",
+          "category": "education",
+          "field": "education_level",
+          "operator": "in",
+          "value": ["postgraduate_general", "postgraduate_technical"],
+          "requiresOfficialVerification": false,
+          "label": "Postgraduate STEM Enrollment",
+          "passExplanation": "Enrolled in a postgraduate STEM degree.",
+          "failExplanation": "Must be pursuing a postgraduate degree in designated STEM streams.",
+          "missingExplanation": "Select education level."
+        },
+        {
+          "type": "CONDITION",
+          "id": "reliance-pg-year",
+          "category": "education",
+          "field": "course_year",
+          "operator": "eq",
+          "value": 1,
+          "requiresOfficialVerification": false,
+          "label": "First Year of PG Degree",
+          "passExplanation": "Admitted to 1st year of postgraduate program.",
+          "failExplanation": "Only 1st year postgraduate students are eligible.",
+          "missingExplanation": "Specify course year."
+        },
+        {
+          "type": "OR",
+          "id": "reliance-pg-gate-or-cgpa",
+          "label": "GATE Score 550-1000 OR UG CGPA >= 7.5",
+          "children": [
+            {
+              "type": "CONDITION",
+              "id": "reliance-pg-gate",
+              "category": "academic",
+              "field": "gate_score",
+              "operator": "gte",
+              "value": 550,
+              "requiresOfficialVerification": true,
+              "label": "GATE Score >= 550",
+              "passExplanation": "GATE score is 550 or above.",
+              "failExplanation": "GATE score is below 550.",
+              "missingExplanation": "Enter GATE score.",
+              "verificationNote": "Official GATE Scorecard required."
+            },
+            {
+              "type": "CONDITION",
+              "id": "reliance-pg-cgpa",
+              "category": "academic",
+              "field": "ug_cgpa",
+              "operator": "gte",
+              "value": 7.5,
+              "requiresOfficialVerification": true,
+              "label": "UG CGPA >= 7.5",
+              "passExplanation": "Undergraduate CGPA is 7.5 or higher.",
+              "failExplanation": "Undergraduate CGPA is below 7.5.",
+              "missingExplanation": "Enter UG CGPA.",
+              "verificationNote": "Final undergraduate transcript required."
+            }
+          ]
+        },
+        {
+          "type": "CONDITION",
+          "id": "reliance-pg-study-mode",
+          "category": "course",
+          "field": "study_mode",
+          "operator": "eq",
+          "value": "regular_full_time",
+          "requiresOfficialVerification": false,
+          "label": "Regular Full-Time Course",
+          "passExplanation": "Enrolled in regular full-time PG program.",
+          "failExplanation": "Part-time/distance PG courses are ineligible.",
+          "missingExplanation": "Select study mode."
+        }
+      ]
+    },
+    "documents": [
+      {
+        "document_name": "GATE Scorecard / Undergraduate Official Transcript",
+        "specification_notes": "Valid GATE score (550-1000) or UG CGPA >= 7.5.",
+        "is_mandatory": true,
+        "issuing_authority": "IIT GATE Committee / Degree University",
+        "sort_order": 1
+      },
+      {
+        "document_name": "PG Admission Confirmation & Bonafide",
+        "specification_notes": "1st year full-time regular PG enrollment in designated STEM stream.",
+        "is_mandatory": true,
+        "issuing_authority": "University Registrar",
+        "sort_order": 2
+      }
+    ],
+    "sources": [
+      {
+        "source_title": "Reliance Foundation Postgraduate Scholarship Portal",
+        "source_url": "https://scholarships.reliancefoundation.org",
+        "guideline_pdf_url": null,
+        "is_primary_government_portal": false
+      }
+    ]
+  }
+]
