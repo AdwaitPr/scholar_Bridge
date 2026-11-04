@@ -310,7 +310,15 @@ export interface Database {
           eligibility_source_citation?: string;
           created_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "scholarship_eligibility_rules_scholarship_id_fkey";
+            columns: ["scholarship_id"];
+            isOneToOne: false;
+            referencedRelation: "scholarships";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       scholarship_documents: {
         Row: {
@@ -340,7 +348,15 @@ export interface Database {
           issuing_authority?: string | null;
           sort_order?: number;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "scholarship_documents_scholarship_id_fkey";
+            columns: ["scholarship_id"];
+            isOneToOne: false;
+            referencedRelation: "scholarships";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       scholarship_sources: {
         Row: {
@@ -370,7 +386,15 @@ export interface Database {
           is_primary_government_portal?: boolean;
           last_checked_at?: string;
         };
-        Relationships: [];
+        Relationships: [
+          {
+            foreignKeyName: "scholarship_sources_scholarship_id_fkey";
+            columns: ["scholarship_id"];
+            isOneToOne: false;
+            referencedRelation: "scholarships";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       saved_scholarships: {
         Row: {

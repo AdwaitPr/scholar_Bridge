@@ -27,6 +27,7 @@ export const DiscoveryQuerySchema = z.object({
   course: z.string().max(80).optional(),
   funding_type: FundingClassificationEnum.optional(),
   provider_type: ProviderTypeEnum.optional(),
+  max_income: z.coerce.number().int().positive().optional(),
   hide_expired: z
     .string()
     .optional()
