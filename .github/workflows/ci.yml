@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    name: Typecheck, Lint, Test & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.16.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check (tsc --noEmit)
+        run: pnpm typecheck
+
+      - name: Lint (eslint)
+        run: pnpm lint
+
+      - name: Unit tests (vitest)
+        run: pnpm test:unit
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-anon-key"
+          NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+          SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key"
+
+      - name: Build Next.js app
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-anon-key"
+          NEXT_PUBLIC_APP_URL: "http://localhost:3000"
+          SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key"
