@@ -6,12 +6,14 @@ interface EmptyStateProps {
   title?: string;
   description?: string;
   onReset?: () => void;
+  action?: React.ReactNode;
 }
 
 export function EmptyState({
   title = "No scholarships match your filters",
   description = "Try adjusting your search keywords, education level, or clearing some filters.",
   onReset,
+  action,
 }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white p-12 text-center">
@@ -25,6 +27,7 @@ export function EmptyState({
           Reset All Filters
         </Button>
       )}
+      {action}
     </div>
   );
 }
