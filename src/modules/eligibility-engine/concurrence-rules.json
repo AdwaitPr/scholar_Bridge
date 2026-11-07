@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "2026-11-07",
+  "referenceAcademicYear": "2026-27",
+  "timezone": "Asia/Kolkata",
+  "schemeClassifications": {
+    "SCH-01": {
+      "classification": "CENTRAL_MERIT",
+      "competitivenessWeight": 0.6,
+      "maxAnnualBenefitInr": 50000,
+      "portal": "NSP"
+    },
+    "SCH-02": {
+      "classification": "CENTRAL_MERIT",
+      "competitivenessWeight": 0.6,
+      "maxAnnualBenefitInr": 50000,
+      "portal": "NSP"
+    },
+    "SCH-03": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.85,
+      "maxAnnualBenefitInr": 50000,
+      "portal": "NSP"
+    },
+    "SCH-04": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.7,
+      "maxAnnualBenefitInr": 50000,
+      "portal": "NSP"
+    },
+    "SCH-05": {
+      "classification": "CENTRAL_MERIT",
+      "competitivenessWeight": 0.35,
+      "maxAnnualBenefitInr": 150000,
+      "portal": "NSP"
+    },
+    "SCH-06": {
+      "classification": "CENTRAL_MERIT",
+      "competitivenessWeight": 0.5,
+      "maxAnnualBenefitInr": 80000,
+      "portal": "NSP"
+    },
+    "SCH-07": {
+      "classification": "CENTRAL_MERIT",
+      "competitivenessWeight": 0.25,
+      "maxAnnualBenefitInr": 20000,
+      "portal": "NSP"
+    },
+    "SCH-08": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.4,
+      "maxAnnualBenefitInr": 200000,
+      "portal": "NSP"
+    },
+    "SCH-09": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.75,
+      "maxAnnualBenefitInr": 200000,
+      "portal": "NSP"
+    },
+    "SCH-10": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.75,
+      "maxAnnualBenefitInr": 250000,
+      "portal": "NSP"
+    },
+    "SCH-11": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.85,
+      "maxAnnualBenefitInr": 140000,
+      "portal": "NSP"
+    },
+    "SCH-12": {
+      "classification": "CENTRAL_WELFARE",
+      "competitivenessWeight": 0.65,
+      "maxAnnualBenefitInr": 36000,
+      "portal": "NSP"
+    },
+    "SCH-13": {
+      "classification": "CENTRAL_MERIT",
+      "competitivenessWeight": 0.5,
+      "maxAnnualBenefitInr": 12000,
+      "portal": "NSP"
+    },
+    "SCH-14": {
+      "classification": "STATE_POST_MATRIC",
+      "competitivenessWeight": 0.95,
+      "maxAnnualBenefitInr": 150000,
+      "portal": "STATE_EDISTRICT_OR_NSP"
+    },
+    "SCH-15A": {
+      "classification": "PHILANTHROPIC_STACKABLE",
+      "competitivenessWeight": 0.15,
+      "maxAnnualBenefitInr": 50000,
+      "portal": "EXTERNAL_DIRECT"
+    },
+    "SCH-15B": {
+      "classification": "PHILANTHROPIC_STACKABLE",
+      "competitivenessWeight": 0.1,
+      "maxAnnualBenefitInr": 200000,
+      "portal": "EXTERNAL_DIRECT"
+    }
+  },
+  "concurrenceRules": [
+    {
+      "code": "RULE_CENTRAL_MERIT_MUTUAL_EXCLUSION",
+      "description": "NSP permits submitting only 1 Central Merit application per academic cycle.",
+      "relationship": "MUTUALLY_EXCLUSIVE",
+      "appliesToClassifications": ["CENTRAL_MERIT", "CENTRAL_MERIT"],
+      "warningMessage": "You cannot submit more than one Central Merit application on NSP in the same academic year."
+    },
+    {
+      "code": "RULE_CENTRAL_DISBURSEMENT_DUPLICATION",
+      "description": "DBT Bharat and GFR 230(1) prohibit receiving duplicate central disbursements.",
+      "relationship": "DUAL_APPLY_SINGLE_DISBURSE",
+      "appliesToClassifications": ["CENTRAL_MERIT", "CENTRAL_WELFARE"],
+      "warningMessage": "NSP permits applying to both 1 Merit and 1 Welfare scheme to maximize your selection odds. However, if awarded both, you must surrender one before final disbursement."
+    },
+    {
+      "code": "RULE_STATE_TUITION_DISPLACEMENT",
+      "description": "State Post-Matric fee reimbursement is displaced if a central scheme pays full tuition.",
+      "relationship": "MUTUALLY_EXCLUSIVE",
+      "appliesToClassifications": ["CENTRAL_WELFARE", "STATE_POST_MATRIC"],
+      "warningMessage": "Both schemes reimburse tuition fees. Claiming tuition from both State and Central sources is prohibited."
+    },
+    {
+      "code": "RULE_PHILANTHROPIC_GAP_STACKING",
+      "description": "Private philanthropic foundation grants stack with government aid up to the verifiable cost of education.",
+      "relationship": "STACKABLE_GAP_FUNDING",
+      "appliesToClassifications": ["CENTRAL_MERIT", "PHILANTHROPIC_STACKABLE"],
+      "guidanceMessage": "These scholarships can be legally combined. Reliance Foundation allows government aid up to the total institutional cost of education."
+    },
+    {
+      "code": "RULE_PHILANTHROPIC_WELFARE_STACKING",
+      "description": "Private philanthropic grants stack with government welfare allowances.",
+      "relationship": "STACKABLE_GAP_FUNDING",
+      "appliesToClassifications": [
+        "CENTRAL_WELFARE",
+        "PHILANTHROPIC_STACKABLE"
+      ],
+      "guidanceMessage": "Stackable gap funding: Government welfare covers college fees; philanthropic grant can cover laptop and hostel living costs."
+    }
+  ]
+}
