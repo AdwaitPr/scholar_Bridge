@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Bookmark,
   ChevronRight,
+  Scale,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { ScholarshipCatalogRepository } from "@/modules/scholarship-catalog/repository";
 import { evaluateScholarshipDeadline } from "@/modules/deadline-management/deadline.service";
 import { evaluateScholarshipEligibility } from "@/modules/eligibility-engine/evaluator";
+import { ConcurrenceOptimizer } from "@/modules/eligibility-engine/concurrence-optimizer";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 interface ScholarshipDetailPageProps {
@@ -119,6 +121,8 @@ export default async function ScholarshipDetailPage({
         maximumFractionDigits: 0,
       }).format(scholarship.max_annual_benefit_inr)
     : null;
+
+  const meta = ConcurrenceOptimizer.getClassificationMeta(scholarship.code);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -320,8 +324,80 @@ export default async function ScholarshipDetailPage({
             </section>
           </div>
 
-          {/* Right Column: Required Documents */}
+          {/* Right Column: Concurrence Rules & Required Documents */}
           <div className="space-y-6">
+            {/* Regulatory Concurrence & Stacking Guidance Card */}
+            <section className="rounded-xl border border-blue-200 bg-gradient-to-br from-white to-blue-50/40 p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between border-b border-blue-100 pb-2">
+                <div className="flex items-center gap-1.5 font-bold text-slate-900 text-sm">
+                  <Scale className="h-4 w-4 text-blue-700" />
+                  <h3>Regulatory Stacking Rules</h3>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">
+                  AY 2026–27
+                </span>
+              </div>
+
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500 font-medium">
+                    Scheme Type:
+                  </span>
+                  <span className="font-bold text-slate-800">
+                    {meta?.classification === "CENTRAL_MERIT"
+                      ? "Central Merit Scheme"
+                      : meta?.classification === "CENTRAL_WELFARE"
+                        ? "Central Welfare / Need Scheme"
+                        : meta?.classification === "STATE_POST_MATRIC"
+                          ? "State Post-Matric Scheme"
+                          : "Philanthropic / Foundation CSR"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500 font-medium">
+                    Application Portal:
+                  </span>
+                  <span className="font-bold text-slate-800 font-mono">
+                    {meta?.portal || "Official Portal"}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-500 font-medium">
+                    Stackability:
+                  </span>
+                  <span className="font-bold text-emerald-700">
+                    {meta?.classification === "PHILANTHROPIC_STACKABLE"
+                      ? "Fully Stackable (Gap Funding)"
+                      : "Single Central Disbursement"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-lg bg-blue-50/80 p-3 text-[11px] text-blue-950 leading-relaxed">
+                <p className="font-semibold text-blue-900">
+                  {meta?.classification === "CENTRAL_MERIT"
+                    ? "NSP limits applicants to 1 Central Merit scheme per AY. Cannot be held concurrently with another Central Merit scholarship under GFR 230(1)."
+                    : meta?.classification === "CENTRAL_WELFARE"
+                      ? "Can be applied for simultaneously with 1 Central Merit scheme on NSP. If both are awarded, one must be surrendered under DBT Bharat rules."
+                      : meta?.classification === "STATE_POST_MATRIC"
+                        ? "Co-funded with State. Cannot be combined with Central Top Class schemes for the same academic year."
+                        : "Stackable alongside Central and State aid up to total verifiable tuition and hostel costs."}
+                </p>
+              </div>
+
+              <div className="pt-1">
+                <Link
+                  href="/saved"
+                  className="text-xs font-bold text-blue-700 hover:text-blue-900 inline-flex items-center gap-1"
+                >
+                  <span>Simulate in Grant Optimizer</span>
+                  <ChevronRight className="h-3 w-3" />
+                </Link>
+              </div>
+            </section>
+
             <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm space-y-3">
               <div className="flex items-center gap-1.5 font-bold text-slate-900 text-sm border-b border-slate-100 pb-2">
                 <FileText className="h-4 w-4 text-blue-700" />

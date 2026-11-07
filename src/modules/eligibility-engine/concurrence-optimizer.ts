@@ -5,6 +5,7 @@ import type {
   ConcurrenceConflictPair,
   ConcurrenceRelationship,
   SchemeFundingClassification,
+  SchemeClassificationMeta,
 } from "./concurrence.types";
 
 interface SolveOptions {
@@ -15,6 +16,49 @@ interface SolveOptions {
 
 export class ConcurrenceOptimizer {
   private static readonly DEFAULT_ANNUAL_COLLEGE_FEES_INR = 150000;
+
+  /**
+   * Looks up the regulatory classification metadata for a given scholarship code.
+   */
+  static getClassificationMeta(
+    code: string
+  ): SchemeClassificationMeta | undefined {
+    const classifications = concurrenceData.schemeClassifications as Record<
+      string,
+      SchemeClassificationMeta
+    >;
+    return classifications[code];
+  }
+
+  /**
+   * Converts a database or seeded scholarship entity into an OptimizationCandidate.
+   */
+  static toCandidate(scheme: {
+    code: string;
+    slug?: string;
+    name: string;
+    max_annual_benefit_inr?: number | null;
+    funding_type?: string;
+  }): OptimizationCandidate {
+    const meta = this.getClassificationMeta(scheme.code);
+    const classification: SchemeFundingClassification =
+      meta?.classification ??
+      (scheme.funding_type === "FOUNDATION_CSR"
+        ? "PHILANTHROPIC_STACKABLE"
+        : scheme.funding_type === "STATE_GOVERNMENT"
+          ? "STATE_POST_MATRIC"
+          : "CENTRAL_MERIT");
+
+    return {
+      code: scheme.code,
+      slug: scheme.slug || scheme.code.toLowerCase(),
+      name: scheme.name,
+      annualBenefitInr:
+        scheme.max_annual_benefit_inr || meta?.maxAnnualBenefitInr || 50000,
+      classification,
+      competitivenessWeight: meta?.competitivenessWeight ?? 0.5,
+    };
+  }
 
   /**
    * Solves the Combinatorial Grant Optimization Problem for a given set of candidate scholarships.
@@ -59,10 +103,6 @@ export class ConcurrenceOptimizer {
     const rawTotalBenefit = optimalBundle.reduce(
       (sum, c) => sum + c.annualBenefitInr,
       0
-    );
-
-    const hasPhilanthropic = optimalBundle.some(
-      (c) => c.classification === "PHILANTHROPIC_STACKABLE"
     );
 
     // Cap at annual college fees if philanthropic/gap funding is involved or fees are explicitly specified

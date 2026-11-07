@@ -9,6 +9,8 @@ import { MatchBadge } from "@/components/ui/match-badge";
 import { AntiFraudBanner } from "@/components/ui/anti-fraud-banner";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { evaluateScholarshipDeadline } from "@/modules/deadline-management/deadline.service";
+import { FundingStrategyCockpit } from "@/modules/eligibility-engine/components/funding-strategy-cockpit";
+import { ConcurrenceOptimizer } from "@/modules/eligibility-engine/concurrence-optimizer";
 import seedScholarships from "../../../supabase/seed/scholarships.json";
 
 export default async function SavedScholarshipsPage() {
@@ -55,6 +57,15 @@ export default async function SavedScholarshipsPage() {
   } catch {
     // Unauthenticated or table unavailable
   }
+
+  const savedCandidates = savedItems
+    .filter(
+      (
+        item
+      ): item is typeof item & { scholarship: (typeof seedScholarships)[0] } =>
+        item.scholarship !== null
+    )
+    .map((item) => ConcurrenceOptimizer.toCandidate(item.scholarship));
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between">
@@ -119,36 +130,43 @@ export default async function SavedScholarshipsPage() {
           </Link>
         </div>
 
-        {/* NSP Rule Guidance Callout */}
-        <div className="rounded-xl border border-blue-200 bg-blue-50/80 p-4 text-xs text-blue-900 space-y-1.5">
-          <div className="flex items-center gap-1.5 font-bold text-blue-950">
-            <ShieldAlert className="h-4 w-4 text-blue-700" />
-            <span>
-              NSP AY 2026–27 Multi-Application & Concurrent Receipt Rules
-            </span>
+        {/* Interactive Grant Concurrence & Disbursement Cockpit */}
+        {savedCandidates.length > 0 && (
+          <FundingStrategyCockpit candidates={savedCandidates} />
+        )}
+
+        {/* Fallback Static Callout if no saved scholarships */}
+        {savedCandidates.length === 0 && (
+          <div className="rounded-xl border border-blue-200 bg-blue-50/80 p-4 text-xs text-blue-900 space-y-1.5">
+            <div className="flex items-center gap-1.5 font-bold text-blue-950">
+              <ShieldAlert className="h-4 w-4 text-blue-700" />
+              <span>
+                NSP AY 2026–27 Multi-Application & Concurrent Receipt Rules
+              </span>
+            </div>
+            <p className="text-blue-900 leading-relaxed">
+              Under National Scholarship Portal (NSP) guidelines for Academic
+              Year 2026–27, students are permitted to apply for{" "}
+              <strong>one merit-based scheme</strong> alongside one or more{" "}
+              <strong>need/welfare-based schemes</strong>. However, final Direct
+              Benefit Transfer (DBT) disbursement rules strictly prohibit
+              holding concurrent central or state government scholarships.
+              Private foundation awards (e.g. Reliance Foundation) may be held
+              concurrently subject to their independent terms.
+            </p>
+            <div className="pt-1">
+              <a
+                href="https://scholarships.gov.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-bold text-blue-800 underline hover:text-blue-900"
+              >
+                <span>Read Official NSP FAQs & Guidelines</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
           </div>
-          <p className="text-blue-900 leading-relaxed">
-            Under National Scholarship Portal (NSP) guidelines for Academic Year
-            2026–27, students are permitted to apply for{" "}
-            <strong>one merit-based scheme</strong> alongside one or more{" "}
-            <strong>need/welfare-based schemes</strong>. However, final Direct
-            Benefit Transfer (DBT) disbursement rules strictly prohibit holding
-            concurrent central or state government scholarships. Private
-            foundation awards (e.g. Reliance Foundation) may be held
-            concurrently subject to their independent terms.
-          </p>
-          <div className="pt-1">
-            <a
-              href="https://scholarships.gov.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-bold text-blue-800 underline hover:text-blue-900"
-            >
-              <span>Read Official NSP FAQs & Guidelines</span>
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          </div>
-        </div>
+        )}
 
         {/* Comparison Section */}
         {savedItems.length === 0 ? (
